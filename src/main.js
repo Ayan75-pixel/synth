@@ -2,7 +2,7 @@ import './style.css'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 import * as Tone from "tone";
-import { renderSequencer } from './sequencer';
+import { play, renderSequencer } from './sequencer';
 
 
 
@@ -29,6 +29,8 @@ document.querySelector('#app').innerHTML = `
 
         <div id ="sequencer-div">
         </div>
+
+        <button id ="play-button">Play</button>
       </div>
     </div>
      
@@ -53,7 +55,7 @@ function updateChorus(Chorus, value) {
 
 }
 
-const synth = new Tone.PolySynth({ oscillator: { type: "amsawtooth27" } }).toDestination();
+const synth = new Tone.MonoSynth({ oscillator: { type: "amsawtooth27" } }).toDestination();
 const dist = new Tone.Distortion(15).toDestination()
 synth.connect(dist)
 
@@ -173,6 +175,8 @@ function Createkeys() {
 document.querySelector("button")?.addEventListener("click", async () => {
   await Tone.start();
 })
-
+document.getElementById("play-button").addEventListener("click", ()=> {
+  play();
+})
 Createkeys()
 renderSequencer(8)

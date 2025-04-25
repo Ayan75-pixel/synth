@@ -67,25 +67,26 @@ export function handlenoteclick(event){
 }
 
  export function step(index){
+    beats[index].forEach(function (element) {
+        if (!element.instrument || element == null) {
+            return
+        }
 
+        element.instrument.triggerAttackRelease("C2", "1n");
+    });
 
     
  }
 
 export function play() {
+    let currentstep=0
+    
     const repeat=(time)=>{
-        for (let i = 0;i<8;i++){
-            beats[i].forEach(function (element) {
-                if (!element.instrument || element == null) {
-                    return
-                }
-        
-                element.instrument.triggerAttackRelease("C2", "1n", time);
-            });
-        }
+        step(currentstep)
+        currentstep=(currentstep+1)%BEAT_COUNT
     }
 
-    Tone.Transport.bpm.value=1
+    Tone.Transport.bpm.value=100
     Tone.Transport.scheduleRepeat(repeat,"8n")
        Tone.Transport.start()
 }
