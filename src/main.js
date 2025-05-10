@@ -52,10 +52,9 @@ function updatePitch(Pitch, value) {
 }
 function updateChorus(Chorus, value) {
   Chorus.set({ bits: value })
-
 }
 
-const synth = new Tone.MonoSynth({ oscillator: { type: "amsawtooth27" } }).toDestination();
+const synth = new Tone.PolySynth({ oscillator: { type: "amsawtooth27" } }).toDestination();
 const dist = new Tone.Distortion(15).toDestination()
 synth.connect(dist)
 
@@ -172,10 +171,8 @@ function Createkeys() {
 
 };
 
-document.querySelector("button")?.addEventListener("click", async () => {
-  await Tone.start();
-})
-document.getElementById("play-button").addEventListener("click", ()=> {
+
+document.getElementById("play-button").addEventListener("click", () => {
   play();
 })
 Createkeys()

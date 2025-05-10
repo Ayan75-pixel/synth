@@ -73,6 +73,7 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  
 }
 button:hover {
   border-color: #646cff;
@@ -94,6 +95,8 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
 .piano{
   display:flex;
   flex-direction: row;
@@ -141,9 +144,11 @@ button:focus-visible {
 
 .seq-note{
   width: 32px;
-  height: 25%;
-  border:1px solid #000000;
-  background-color: #030303;
+  height: 32px;
+  border:1px solid #9701ae;
+  background-color: #000000;
+  border-radius: 100%;
+  box-shadow: inset 0 0 0 2px #3447ec, 2px 2px 5px #7c24d9; 
 }
 
 .seq-note:hover {
@@ -152,7 +157,7 @@ button:focus-visible {
 }
 
 .active {
-  background-color: #ff1414;
+  background-color: #2a224a;
 }.active:hover {
   background-color: #7d0707;
 }

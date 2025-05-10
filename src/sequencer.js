@@ -51,6 +51,9 @@ export function handlenoteclick(event){
     if (event.target.dataset.active == "true"){
         event.target.dataset.active=false
         event.target.classList.remove("active")
+        const b= event.target.dataset.beat
+        const i = event.target.dataset.instrument
+        beats[b][i].instrument = null
     }
     else {
         event.target.dataset.active=true
@@ -62,8 +65,6 @@ export function handlenoteclick(event){
         const i = event.target.dataset.instrument
         beats[b][i].instrument = instruments[i]
     }
-
-    play()
 }
 
  export function step(index){
@@ -72,7 +73,7 @@ export function handlenoteclick(event){
             return
         }
 
-        element.instrument.triggerAttackRelease("C2", "1n");
+        element.instrument.triggerAttackRelease("C2", "8n");
     });
 
     
